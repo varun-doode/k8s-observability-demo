@@ -61,6 +61,9 @@ make grafana
   — the pull model, instrumentation, service discovery, and PromQL.
 - [Getting metrics into Splunk](docs/metrics-to-splunk.md)
   — OpenTelemetry Collector, `remote_write`, HEC, and the Splunk Helm chart.
+- [What is OpenTelemetry?](docs/what-is-opentelemetry.md)
+  — the vendor-neutral standard for metrics, traces, and logs, and how the
+  Collector bridges Prometheus and Splunk.
 
 ## Teardown
 
