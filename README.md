@@ -1,7 +1,6 @@
 # k8s-observability-demo
 
 [![CI](https://github.com/varun-doode/k8s-observability-demo/actions/workflows/ci.yml/badge.svg)](https://github.com/varun-doode/k8s-observability-demo/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 ![Kubernetes](https://img.shields.io/badge/kubernetes-326CE5?logo=kubernetes&logoColor=white)
 ![Prometheus](https://img.shields.io/badge/prometheus-E6522C?logo=prometheus&logoColor=white)
 
@@ -72,6 +71,3 @@ make clean
 kind delete cluster --name obs-demo
 ```
 
-## License
-
-MIT
