@@ -34,6 +34,14 @@ make grafana
 - Writing Prometheus scrape configs for Kubernetes service discovery
 - Building Grafana dashboards for the RED method (Rate, Errors, Duration)
 - Wiring up SLO-oriented alerting rules
+- Forwarding metrics to Splunk via the OpenTelemetry Collector
+
+## Documentation
+
+- [How Prometheus collects metrics for observability](docs/how-prometheus-works.md)
+  — the pull model, instrumentation, service discovery, and PromQL.
+- [Getting metrics into Splunk](docs/metrics-to-splunk.md)
+  — OpenTelemetry Collector, `remote_write`, HEC, and the Splunk Helm chart.
 
 ## Teardown
 

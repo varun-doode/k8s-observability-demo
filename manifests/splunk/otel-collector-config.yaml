@@ -1,0 +1,40 @@
+# OpenTelemetry Collector config: scrape Prometheus endpoints and export to Splunk.
+# Mount this as a ConfigMap for the Splunk Distribution of the OTel Collector.
+#
+# Set SPLUNK_HEC_TOKEN via a Kubernetes Secret; do NOT commit real tokens.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-collector-config
+data:
+  collector.yaml: |
+    receivers:
+      prometheus:
+        config:
+          scrape_configs:
+            - job_name: "k8s-apps"
+              scrape_interval: 15s
+              static_configs:
+                - targets: ["sample-app.default.svc:8080"]
+
+    processors:
+      batch: {}
+      resourcedetection:
+        detectors: [env, system]
+
+    exporters:
+      splunk_hec:
+        token: "${SPLUNK_HEC_TOKEN}"
+        endpoint: "https://your-splunk-host:8088/services/collector"
+        index: "metrics_index"
+        source: "otel"
+        sourcetype: "prometheus"
+        tls:
+          insecure_skip_verify: true   # set false + provide CA in production
+
+    service:
+      pipelines:
+        metrics:
+          receivers: [prometheus]
+          processors: [batch, resourcedetection]
+          exporters: [splunk_hec]
